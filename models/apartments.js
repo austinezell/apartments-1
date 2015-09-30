@@ -1,16 +1,15 @@
 var mongoose = require('mongoose');
 
-var apartmentSchema =  mongoose.schema({
-  tenant: Array, //array of users?
-  isManager: Boolean,
-  name: String,
-  rent: Number,
-  isAvail: Boolean,
-  unitNum: Number,
-  sqFt: Number
+var apartmentSchema =  mongoose.Schema({
+  unitNum: {type: Number, required: true},
+  rent: {type: Number, required: true},
+  isAvail: {type: Boolean, default: true},
+  sqFt: {type: Number, required: true},
+  bedrooms: {type: Number, required: true},
+  tenants: Array
+  // tenants: [{type: mongoose.Schema.objectId, ref: 'User'}],
 });
 
-//model
-var Apartment = mongoose.model('user', apartmentSchema);
+var Apartment = mongoose.model('Apartment', apartmentSchema);
 
 module.exports = Apartment;

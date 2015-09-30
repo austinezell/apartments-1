@@ -1,11 +1,10 @@
 var mongoose = require('mongoose');
 
 var propertySchema =  mongoose.Schema({
-  isOccupied: Boolean,
-  // manager: user,//?
+  // manager: {user,//?}
   name: String,
-  address: String
-  // apartments: [{Object apartments}]
+  address: String,
+  // apartments: [{type:Object Apartment}]
 });
 
 //model
