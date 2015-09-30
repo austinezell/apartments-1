@@ -1,19 +1,25 @@
 var express = require('express');
 var router = express.Router();
 
-var User = require('../models/users');
+var User = require('../models/tenants');
 var Property = require('../models/properties');
 var Apartment = require('../models/apartments');
 
 /* GET users listing. */
 
-//gets user.. not necessay maybe?
+//gets users to be diplayed on a page
 router.get('/', function(req, res, next) {
   User.find(function(err, data) {
     console.log(data);
     res.send(data);
   });
 });
+
+// router.delete('/:userId/remove', function(req, res) {
+//   User.findByIdAndRemove(req.params.userId, function(err, deletedUser) {
+//     res.status(err ? 400 : 200).send(err || deletedUser);
+//   });
+// });
 
 
 //property crud
@@ -28,10 +34,6 @@ router.delete('/property/:propertyId', function(req, res) {
     res.status(err ? 400 : 200).send(err || deletedProperty);
   });
 });
-
-
-//what will managers be able to update
-// router.put('/',)
 
 
 
