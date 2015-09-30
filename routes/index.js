@@ -13,35 +13,20 @@ var isAuthenticated = function (req, res, next) {
 
 module.exports = function(passport){
 
-	/* GET login page. */
-	router.get('/', function(req, res) {
-    	// Display the Login page with any flash message, if any
-		res.render('index', { message: req.flash('message') });
-	});
-
 	/* Handle Login POST */
 	router.post('/login', passport.authenticate('login', {
-		successRedirect: '/home',
-		failureRedirect: '/',
+		successRedirect: '/home', //frontend stuff
+		failureRedirect: '/', //frontend stuff
 		failureFlash : true
 	}));
-
-	/* GET Registration Page */
-	router.get('/signup', function(req, res){
-		res.render('register',{message: req.flash('message')});
-	});
 
 	/* Handle Registration POST */
 	router.post('/signup', passport.authenticate('signup', {
-		successRedirect: '/home',
-		failureRedirect: '/signup',
+		successRedirect: '/home', //redirect to manage page (frontend)
+		failureRedirect: '/signup', //redirect to signup page (frontend)
 		failureFlash : true
 	}));
 
-	/* GET Home Page */
-	router.get('/home', isAuthenticated, function(req, res){
-		res.render('home', { user: req.user });
-	});
 
 	/* Handle Logout */
 	router.get('/signout', function(req, res) {
@@ -56,7 +41,7 @@ module.exports = function(passport){
 
 	//manage page
 	router.get('/manage', isAuthenticated, function(req, res) {
-		res.render('manage')
+		res.send('manage')
 	})
 
 	return router;
