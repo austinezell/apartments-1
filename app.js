@@ -34,9 +34,9 @@ var initPassport = require('./passport/init');
 initPassport(passport);
 
 app.use('/', require('./routes/index')(passport));
+app.use('/managers', require('./routes/managers'));
 
 // app.use('/', require('./routes/index'));
-// app.use('/users', require('./routes/users'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

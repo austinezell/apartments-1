@@ -11,6 +11,6 @@ var apartmentSchema =  mongoose.schema({
 });
 
 //model
-var Apartment = Mongoose.model('user', apartmentSchema);
+var Apartment = mongoose.model('user', apartmentSchema);
 
 module.exports = Apartment;

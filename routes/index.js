@@ -15,15 +15,15 @@ module.exports = function(passport){
 
 	/* Handle Login POST */
 	router.post('/login', passport.authenticate('login', {
-		successRedirect: '/home', //frontend stuff
-		failureRedirect: '/', //frontend stuff
+		successRedirect: 'http://localhost/8000/home', //frontend stuff
+		failureRedirect: 'http://localhost/8000', //frontend stuff
 		failureFlash : true
 	}));
 
 	/* Handle Registration POST */
 	router.post('/signup', passport.authenticate('signup', {
-		successRedirect: '/home', //redirect to manage page (frontend)
-		failureRedirect: '/signup', //redirect to signup page (frontend)
+		successRedirect: 'http://localhost/8000/home', //redirect to manage page (frontend)
+		failureRedirect: 'http://localhost/8000/signup', //redirect to signup page (frontend)
 		failureFlash : true
 	}));
 
@@ -39,10 +39,10 @@ module.exports = function(passport){
 		console.log(passport);
 	});
 
-	//manage page
-	router.get('/manage', isAuthenticated, function(req, res) {
-		res.send('manage')
-	})
+	// //manage page
+	// router.get('/manage', isAuthenticated, function(req, res) {
+	// 	res.send('manage')
+	// })
 
 	return router;
 }

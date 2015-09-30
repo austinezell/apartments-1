@@ -1,14 +1,14 @@
-var Mongoose = require('mongoose');
+var mongoose = require('mongoose');
 
 var propertySchema =  mongoose.Schema({
   isOccupied: Boolean,
-  manager: user,//?
+  // manager: user,//?
   name: String,
   address: String
-  apartments: [{Object apartments}]
+  // apartments: [{Object apartments}]
 });
 
 //model
-var Property = Mongoose.model('Property', propertySchema);
+var Property = mongoose.model('Property', propertySchema);
 
 module.exports = Property;
