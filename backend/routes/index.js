@@ -8,7 +8,7 @@ var isAuthenticated = function (req, res, next) {
 	if (req.isAuthenticated())
 		return next();
 	// if the user is not authenticated then redirect him to the login page
-	res.redirect('http://localhost:8000/login');
+	res.redirect('http://localhost:8000/');
 }
 
 module.exports = function(passport){
@@ -33,8 +33,8 @@ router.get('/signup', function(req, res){
 
 	/* Handle Registration POST */
 	router.post('/signup', passport.authenticate('signup', {
-		successRedirect: '/home',
-		failureRedirect: '/signup',
+		successRedirect: 'http://localhost:8000/manage',
+		failureRedirect: 'http://localhost:8000/register',
 		failureFlash : true
 	}));
 
