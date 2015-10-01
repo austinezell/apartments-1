@@ -1,0 +1,99 @@
+<div class="jumbotron" style="text-align:center">
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <div class="thumbnail">
+        <h3>Add new Property</h3>
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label class="control-label col-sm-4" for="name">Name:</label>
+            <div class="col-sm-4">
+              <input autofocus class="form-control" id="name" ng-model="property.name" placeholder="Property Name" type="text">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4" for="url">Address:</label>
+            <div class="col-sm-4">
+              <input class="form-control" id="url" ng-model="property.address" placeholder="Address" type="text">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-4">
+              <button class="btn btn-success btn-block" ng-click="addProp(property)" type="submit">Add Property</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+      <div class="thumbnail">
+        <h3>Add new apartment</h3>
+        <form class="form-horizontal" role="form">
+
+          <div class="form-group">
+            <label class="control-label col-sm-4" for="gender">Property:</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="gender" ng-model="apartment.property">
+                <option value="{{n._id}}" ng-repeat="n in propertiesList">{{n.name}}</option>
+              </select>
+            </div>
+          </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-4" for="gender">Available:</label>
+          <div class="col-sm-4">
+            <select class="form-control" id="gender" ng-model="apartment.isAvail">
+              <option value="None">(Select One)</option>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-4" for="name">Room Number:</label>
+          <div class="col-sm-4">
+            <input autofocus class="form-control" id="name" ng-model="apartment.unitNum" type="number">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-4" for="name">Square Footage:</label>
+          <div class="col-sm-4">
+            <input autofocus class="form-control" id="name" ng-model="apartment.sqFt" type="number">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-4" for="name">Rent:</label>
+          <div class="col-sm-4">
+            <input autofocus class="form-control" id="name" ng-model="apartment.rent" type="number">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-4 col-sm-4">
+            <button class="btn btn-success btn-block" ng-click="addApt(apartment)" type="submit">Add Apartment</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  </div>
+
+  <div class="row">
+  <div class="col-sm-6 col-md-4" ng-repeat="n in propertiesList track by $index">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>{{n.name}}</h3>
+        <p>
+          <strong>Address:</strong>
+          {{n.address}}</p>
+          <strong>Apartments:</strong>
+        <p ng-repeat="apt in n.apartments">
+          {{apt.unitNum}}</p>
+          <br>
+        <button class="btn btn-primary" ui-sref="manageProp({propertyId: n._id})">Manage</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
