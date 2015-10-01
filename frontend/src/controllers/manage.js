@@ -20,6 +20,17 @@ app.controller('manageCtrl', function ($scope, $http, $state) {
         })
     }
 
+    $scope.delete = function(propId) {
+      $http.delete('http://localhost:3000/managers/property/' + propId)
+        .then(function(data) {
+          console.log(data);
+          $state.go($state.current, {}, {reload: true});
+        })
+        .catch(function(error) {
+          console.log(error);
+        })
+    }
+
     $scope.addApt = function(apartment) {
       console.log(apartment);
       if (apartment.isAvail === 'true') {
